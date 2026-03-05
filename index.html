@@ -3,53 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHIVAM 180 DAYS FINAL</title>
+<title>SHIVAM 180 DAYS PRO</title>
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b);
-display:flex;justify-content:center;
+background:#0f172a;
+display:flex;
+justify-content:center;
 }
+
 .app{
-width:100%;max-width:420px;background:white;
-min-height:100vh;border-radius:25px 25px 0 0;
+width:100%;
+max-width:420px;
+background:white;
+min-height:100vh;
+border-radius:25px 25px 0 0;
 overflow:hidden;
 }
+
 header{
-background:#0f172a;color:white;
-padding:20px;text-align:center;font-weight:bold;
+background:#0f172a;
+color:white;
+padding:20px;
+text-align:center;
+font-weight:bold;
 }
+
 .section{padding:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px
+}
+
 .card{
-background:#f1f5f9;padding:18px;border-radius:18px;
-text-align:center;font-weight:bold;cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,0.1)
+background:#f1f5f9;
+padding:18px;
+border-radius:18px;
+text-align:center;
+font-weight:bold;
+cursor:pointer;
 }
+
 .circle{
-width:160px;height:160px;border-radius:50%;
-margin:auto;display:flex;align-items:center;justify-content:center;
-flex-direction:column;box-shadow:0 5px 15px rgba(0,0,0,0.2)
+width:160px;
+height:160px;
+border-radius:50%;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+box-shadow:0 5px 15px rgba(0,0,0,0.2)
 }
-.box{background:#f8fafc;padding:12px;border-radius:12px;margin:10px 0}
-.subject{
-background:#e2e8f0;padding:10px;border-radius:10px;
-margin-top:10px;cursor:pointer;font-weight:bold
+
+.box{
+background:#f8fafc;
+padding:12px;
+border-radius:12px;
+margin:10px 0
 }
-.topics{display:none;padding-left:10px;margin-top:5px}
+
 button{
-padding:8px 12px;border:none;border-radius:8px;
-background:#0f172a;color:white;margin-top:10px
+padding:8px 12px;
+border:none;
+border-radius:8px;
+background:#111;
+color:white;
+margin-top:10px
 }
-input{width:100%;padding:8px;margin:6px 0;border-radius:6px;border:1px solid #ccc}
-.progress{font-weight:bold;margin:8px 0}
+
+input,textarea{
+width:100%;
+padding:8px;
+margin:6px 0;
+border-radius:6px;
+border:1px solid #ccc
+}
+
 </style>
 </head>
 
 <body>
+
 <div class="app">
-<header>🔥 SHIVAM 180 DAYS FINAL</header>
+
+<header>🔥 SHIVAM 180 DAYS PRO</header>
 
 <div class="section" id="main">
 
@@ -58,222 +102,316 @@ input{width:100%;padding:8px;margin:6px 0;border-radius:6px;border:1px solid #cc
 <p>Days</p>
 </div>
 
+<div id="progressText" style="text-align:center;margin-top:10px;font-weight:bold"></div>
+
 <div class="grid">
-<div class="card" onclick="showGym()">💪 GYM</div>
-<div class="card" onclick="showDiet()">🥗 DIET</div>
-<div class="card" onclick="showSSC()">📚 SSC</div>
-<div class="card" onclick="showBusiness()">💰 BUSINESS</div>
-<div class="card" onclick="showBooks()">📘 BOOKS</div>
+
+<div class="card" onclick="gym()">💪 GYM</div>
+<div class="card" onclick="diet()">🥗 DIET</div>
+<div class="card" onclick="ssc()">📚 SSC</div>
+<div class="card" onclick="business()">💰 BUSINESS</div>
+<div class="card" onclick="brahm()">🔱 BRAHMACHARYA</div>
+<div class="card" onclick="selfie()">📸 SELFIE</div>
+<div class="card" onclick="notes()">📝 NOTES</div>
+
 </div>
 
 </div>
+
 </div>
 
 <script>
 
 // ===== DASHBOARD =====
-const mainDiv = document.getElementById("main");
-const dayEl = document.getElementById("day");
-const circleEl = document.getElementById("circle");
 
-let total = 180;
-let start = localStorage.getItem("start");
+let total=180
+let start=localStorage.getItem("start")
 
 if(!start){
-  start = new Date().toISOString();
-  localStorage.setItem("start", start);
+start=new Date().toISOString()
+localStorage.setItem("start",start)
 }
 
-let diff = Math.floor((new Date() - new Date(start))/(1000*60*60*24)) + 1;
-if(diff > total) diff = total;
+let diff=Math.floor((new Date()-new Date(start))/(1000*60*60*24))+1
 
-dayEl.innerText = diff;
-circleEl.style.background =
-`conic-gradient(#22c55e ${(diff/total)*100}%, #e5e7eb 0%)`;
+if(diff>total) diff=total
 
-function back(){ location.reload(); }
+day.innerText=diff
 
-// ================= GYM =================
-function showGym(){
-mainDiv.innerHTML=`
+circle.style.background=
+`conic-gradient(#22c55e ${(diff/total)*100}%, #e5e7eb 0%)`
+
+
+// ===== GYM =====
+
+function gym(){
+
+main.innerHTML=`
+
 <h2>💪 6 Day Gym Split</h2>
-<div id="gProg" class="progress"></div>
 
-${makeDay("Day 1 - Chest",["Bench Press","Incline DB","Pushdown"])}
-${makeDay("Day 2 - Back",["Pullups","Barbell Row","Curl"])}
-${makeDay("Day 3 - Legs",["Squats","Leg Press","Calf Raise"])}
-${makeDay("Day 4 - Shoulder",["Overhead Press","Lateral Raise","Rear Fly"])}
-${makeDay("Day 5 - Arms",["Hammer Curl","Dips"])}
-${makeDay("Day 6 - Full Body",["Deadlift","Burpees","Pushups"])}
+${dayBox("Chest",
+["Bench Press","Incline DB","Cable Fly"])}
 
-<button onclick="back()">⬅ Back</button>
-`;
-setupGym();
+${dayBox("Back",
+["Pullups","Barbell Row","Lat Pulldown"])}
+
+${dayBox("Legs",
+["Squats","Leg Press","Calf Raise"])}
+
+${dayBox("Shoulder",
+["Overhead Press","Lateral Raise"])}
+
+${dayBox("Arms",
+["Bicep Curl","Tricep Dips"])}
+
+${dayBox("Full Body",
+["Deadlift","Burpees","Pushups"])}
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-function makeDay(title,ex){
-let h=`<div class="box"><b>${title}</b><br>`;
-ex.forEach(e=>{h+=`<label><input type="checkbox" class="g"> ${e}</label><br>`});
-h+=`</div>`;
-return h;
+function dayBox(title,list){
+
+let h=`<div class="box"><b>${title}</b><br>`
+
+list.forEach(e=>{
+h+=`<label><input type="checkbox" class="g"> ${e}</label><br>`
+})
+
+h+=`</div>`
+
+return h
+
 }
 
-function setupGym(){
-let boxes=document.querySelectorAll(".g");
-boxes.forEach((b,i)=>{
-b.checked=localStorage.getItem("g"+i)==="true";
-b.onchange=()=>{localStorage.setItem("g"+i,b.checked);updateGym();}
-});
-updateGym();
+
+// ===== DIET =====
+
+function diet(){
+
+main.innerHTML=`
+
+<h2>🥗 Muscle Gain Diet</h2>
+
+<div class="box">Oats + Banana + Milk</div>
+<div class="box">Rice + Soya Chunks</div>
+<div class="box">4 Roti + Dal</div>
+<div class="box">Paneer Bhurji</div>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-function updateGym(){
-let b=document.querySelectorAll(".g");
-let d=0;b.forEach(x=>{if(x.checked)d++;});
-document.getElementById("gProg").innerText=
-"Workout Completed: "+Math.round((d/b.length)*100)+"%";
-}
 
-// ================= DIET =================
-function showDiet(){
-mainDiv.innerHTML=`
-<h2>🥗 Diet Plan</h2>
+// ===== SSC =====
 
-<div class="box"><b>VEG PLAN</b><br>
-Oats 70g + 3 Banana + Paneer 100g<br>
-Rice 300g + Soya 50g<br>
-4 Roti + Sprouts + Potato<br>
-4 Roti + Paneer Bhurji<br>
-~3500 Calories
+function ssc(){
+
+main.innerHTML=`
+
+<h2>📚 SSC Tracker</h2>
+
+<div class="box">
+
+<b>Reasoning</b><br>
+
+<label><input type="checkbox" class="ssc"> Analogy</label><br>
+<label><input type="checkbox" class="ssc"> Classification</label><br>
+<label><input type="checkbox" class="ssc"> Series</label><br>
+<label><input type="checkbox" class="ssc"> Coding Decoding</label><br>
+<label><input type="checkbox" class="ssc"> Blood Relation</label><br>
+<label><input type="checkbox" class="ssc"> Direction Distance</label><br>
+<label><input type="checkbox" class="ssc"> Venn Diagram</label>
+
 </div>
 
-<div class="box"><b>NON-VEG PLAN</b><br>
-Oats + Dry Fruits<br>
-Peanut Butter Toast + Milk<br>
-Brown Rice + Eggs<br>
-Mass Gainer Shake<br>
-Protein: Bodyweight × 2g
+<div class="box">
+
+<b>Maths</b><br>
+
+<label><input type="checkbox" class="ssc"> Number System</label><br>
+<label><input type="checkbox" class="ssc"> Percentage</label><br>
+<label><input type="checkbox" class="ssc"> Profit Loss</label><br>
+<label><input type="checkbox" class="ssc"> Ratio</label><br>
+<label><input type="checkbox" class="ssc"> Time Work</label><br>
+<label><input type="checkbox" class="ssc"> Algebra</label>
+
 </div>
 
-<button onclick="back()">⬅ Back</button>
-`;
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-// ================= SSC =================
-function showSSC(){
-mainDiv.innerHTML=`
-<h2>📚 SSC PREMIUM</h2>
-<div id="sscOverall" class="progress"></div>
-<div id="dailyTarget" class="progress"></div>
 
-<button onclick="startTimer()">Start 60 Min Timer</button>
-<div id="timer" class="progress"></div>
+// ===== BUSINESS =====
 
-${makeSSC("Reasoning",
-["Analogy","Classification","Series","Coding","Blood Relation","Venn Diagram","Syllogism","Seating Arrangement"])}
+function business(){
 
-${makeSSC("Maths",
-["Number System","Percentage","Profit & Loss","Ratio","Time & Work","Algebra","Geometry","Trigonometry"])}
+main.innerHTML=`
 
-${makeSSC("English",
-["Reading","Cloze Test","Error","Voice","Narration","Para Jumble"])}
+<h2>💰 Winning Products</h2>
 
-${makeSSC("GA",
-["History","Polity","Geography","Economics","Physics","Chemistry","Biology","Current Affairs"])}
+<input id="productName" placeholder="Product name">
 
-<button onclick="back()">⬅ Back</button>
-`;
-setupSSC();
+<button onclick="addProduct()">Add Product</button>
+
+<div id="productList"></div>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
+loadProducts()
+
 }
 
-function makeSSC(title,topics){
-let h=`<div class="box"><b>${title}</b><br>`;
-topics.forEach(t=>{h+=`<label><input type="checkbox" class="sscBox"> ${t}</label><br>`});
-h+=`</div>`;
-return h;
+function addProduct(){
+
+let name=document.getElementById("productName").value
+
+if(!name) return
+
+let list=JSON.parse(localStorage.getItem("products")||"[]")
+
+list.push(name)
+
+localStorage.setItem("products",JSON.stringify(list))
+
+loadProducts()
+
 }
 
-function setupSSC(){
-let b=document.querySelectorAll(".sscBox");
-b.forEach((x,i)=>{
-x.checked=localStorage.getItem("ssc"+i)==="true";
-x.onchange=()=>{localStorage.setItem("ssc"+i,x.checked);updateSSC();}
-});
-updateSSC();
+function loadProducts(){
+
+let list=JSON.parse(localStorage.getItem("products")||"[]")
+
+let html=""
+
+list.forEach((p,i)=>{
+
+html+=`
+<div class="box">
+${p}
+<button onclick="deleteProduct(${i})">❌</button>
+</div>
+`
+
+})
+
+document.getElementById("productList").innerHTML=html
+
 }
 
-function updateSSC(){
-let b=document.querySelectorAll(".sscBox");
-let d=0;b.forEach(x=>{if(x.checked)d++;});
-document.getElementById("sscOverall").innerText=
-"Overall Completion: "+Math.round((d/b.length)*100)+"%";
-document.getElementById("dailyTarget").innerText=
-"Daily Target: "+(d%5)+"/5";
+function deleteProduct(i){
+
+let list=JSON.parse(localStorage.getItem("products")||"[]")
+
+list.splice(i,1)
+
+localStorage.setItem("products",JSON.stringify(list))
+
+loadProducts()
+
 }
 
-let interval;
-function startTimer(){
-let time=60*60;
-interval=setInterval(()=>{
-time--;
-let m=Math.floor(time/60);
-let s=time%60;
-document.getElementById("timer").innerText=
-"Time Left: "+m+":"+ (s<10?"0":"")+s;
-if(time<=0) clearInterval(interval);
-},1000);
+
+// ===== BRAHMACHARYA =====
+
+function brahm(){
+
+let day=localStorage.getItem("brahm")||0
+
+main.innerHTML=`
+
+<h2>🔱 Brahmacharya Challenge</h2>
+
+<h1>${day} Days</h1>
+
+<button onclick="addDay()">+1 Day</button>
+
+<button onclick="resetDay()">Reset</button>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-// ================= BUSINESS =================
-function showBusiness(){
-mainDiv.innerHTML=`
-<h2>💰 Business</h2>
-<input id="rev" placeholder="Revenue">
-<input id="ad" placeholder="Ad Spend">
-<button onclick="calc()">Calculate</button>
-<div id="profit"></div>
-<h3>30 Winning Products</h3>
-${makeProducts()}
-<button onclick="back()">⬅ Back</button>
-`;
+function addDay(){
+
+let d=parseInt(localStorage.getItem("brahm")||0)
+
+d++
+
+localStorage.setItem("brahm",d)
+
+location.reload()
+
 }
 
-function calc(){
-let r=parseFloat(document.getElementById("rev").value)||0;
-let a=parseFloat(document.getElementById("ad").value)||0;
-document.getElementById("profit").innerText="Profit ₹ "+(r-a);
+function resetDay(){
+
+localStorage.setItem("brahm",0)
+
+location.reload()
+
 }
 
-function makeProducts(){
-let h="";
-for(let i=1;i<=30;i++){
-h+=`<input placeholder="Product ${i}">`;
-}
-return h;
+
+// ===== SELFIE =====
+
+function selfie(){
+
+main.innerHTML=`
+
+<h2>📸 Daily Selfie</h2>
+
+<input type="file">
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-// ================= BOOKS =================
-function showBooks(){
-mainDiv.innerHTML=`
-<h2>📘 Book Link</h2>
-<input id="bookLink" placeholder="Paste PDF Link">
-<button onclick="saveBook()">Save</button>
-<div id="savedBook"></div>
-<button onclick="back()">⬅ Back</button>
-`;
-let saved=localStorage.getItem("book");
-if(saved){
-document.getElementById("savedBook").innerHTML=
-`<a href="${saved}" target="_blank">Open Book</a>`;
-}
+
+// ===== NOTES =====
+
+function notes(){
+
+let n=localStorage.getItem("notes")||""
+
+main.innerHTML=`
+
+<h2>📝 Notes</h2>
+
+<textarea id="note">${n}</textarea>
+
+<button onclick="saveNote()">Save</button>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }
 
-function saveBook(){
-localStorage.setItem("book",
-document.getElementById("bookLink").value);
-location.reload();
+function saveNote(){
+
+localStorage.setItem("notes",note.value)
+
+alert("Saved")
+
 }
 
 </script>
+
 </body>
 </html>
