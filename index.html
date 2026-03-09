@@ -102,8 +102,6 @@ border:1px solid #ccc
 <p>Days</p>
 </div>
 
-<div id="progressText" style="text-align:center;margin-top:10px;font-weight:bold"></div>
-
 <div class="grid">
 
 <div class="card" onclick="gym()">💪 GYM</div>
@@ -113,14 +111,16 @@ border:1px solid #ccc
 <div class="card" onclick="brahm()">🔱 BRAHMACHARYA</div>
 <div class="card" onclick="selfie()">📸 SELFIE</div>
 <div class="card" onclick="notes()">📝 NOTES</div>
-<div class="card" onclick="notes()">🕕 Timetable</div>
-</div>
 
 </div>
-
+</div>
 </div>
 
 <script>
+
+let main = document.getElementById("main")
+let day = document.getElementById("day")
+let circle = document.getElementById("circle")
 
 // ===== DASHBOARD =====
 
@@ -133,7 +133,6 @@ localStorage.setItem("start",start)
 }
 
 let diff=Math.floor((new Date()-new Date(start))/(1000*60*60*24))+1
-
 if(diff>total) diff=total
 
 day.innerText=diff
@@ -150,28 +149,16 @@ main.innerHTML=`
 
 <h2>💪 6 Day Gym Split</h2>
 
-${dayBox("Chest",
-["Bench Press","Incline DB","Cable Fly"])}
-
-${dayBox("Back",
-["Pullups","Barbell Row","Lat Pulldown"])}
-
-${dayBox("Legs",
-["Squats","Leg Press","Calf Raise"])}
-
-${dayBox("Shoulder",
-["Overhead Press","Lateral Raise"])}
-
-${dayBox("Arms",
-["Bicep Curl","Tricep Dips"])}
-
-${dayBox("Full Body",
-["Deadlift","Burpees","Pushups"])}
+${dayBox("Chest",["Bench Press","Incline DB","Cable Fly"])}
+${dayBox("Back",["Pullups","Barbell Row","Lat Pulldown"])}
+${dayBox("Legs",["Squats","Leg Press","Calf Raise"])}
+${dayBox("Shoulder",["Overhead Press","Lateral Raise"])}
+${dayBox("Arms",["Bicep Curl","Tricep Dips"])}
+${dayBox("Full Body",["Deadlift","Burpees","Pushups"])}
 
 <button onclick="location.reload()">⬅ Back</button>
 
 `
-
 }
 
 function dayBox(title,list){
@@ -179,13 +166,11 @@ function dayBox(title,list){
 let h=`<div class="box"><b>${title}</b><br>`
 
 list.forEach(e=>{
-h+=`<label><input type="checkbox" class="g"> ${e}</label><br>`
+h+=`<label><input type="checkbox"> ${e}</label><br>`
 })
 
 h+=`</div>`
-
 return h
-
 }
 
 
@@ -195,17 +180,13 @@ function diet(){
 
 main.innerHTML=`
 
-<h2>🥗 VEG DIET PLAN (MUSCLE & WEIGHT GAIN)</h2>
+<h2>🥗 VEG DIET PLAN</h2>
 
-<div class="box">MEAL 1 : CHANA(70G) + MUNG(20G) + 4 ALMONDS + BANANA (3)</div>
-
-<div class="box">MEAL 2 : Rice + 4 ROTI + 1 KATORI DAL</div>
-
-<div class="box">MEAL 3 : RICE (300G) + SOYA CHUNKS(50G) / PANEER(200G)</div>
-
-<div class="box">MEAL 4 : BANANA SHAKE OATS(50G) + BANANA(3) + PEANUT BUTTER AFTER WORKOUT</div>
-
-<div class="box">MEAL 5 : 4 ROTI + BEFORE SLEEP MILK 100ML</div>
+<div class="box">Meal 1 : Chana + Mung + Almond + Banana</div>
+<div class="box">Meal 2 : Rice + 4 Roti + Dal</div>
+<div class="box">Meal 3 : Rice + Soya / Paneer</div>
+<div class="box">Meal 4 : Banana Shake + Oats + Peanut Butter</div>
+<div class="box">Meal 5 : Roti + Milk</div>
 
 <button onclick="location.reload()">⬅ Back</button>
 
@@ -213,66 +194,63 @@ main.innerHTML=`
 
 }
 
+
 // ===== SSC =====
 
 function ssc(){
 
 main.innerHTML=`
 
-<h2>📚 SSC Tracker</h2>
+<h2>📚 SSC Syllabus Tracker</h2>
 
 <div class="box">
-
 <b>Reasoning</b><br>
 
-<label><input type="checkbox" class="ssc"> Analogy</label><br>
-<label><input type="checkbox" class="ssc"> Classification</label><br>
-<label><input type="checkbox" class="ssc"> Series</label><br>
-<label><input type="checkbox" class="ssc"> Coding Decoding</label><br>
-<label><input type="checkbox" class="ssc"> Blood Relation</label><br>
-<label><input type="checkbox" class="ssc"> Direction sence </label><br>
-<label><input type="checkbox" class="ssc"> Venn Diagram</label>
-<label><input type="checkbox" class="ssc"> Number& Alphabet Series</label>
-<label><input type="checkbox" class="ssc"> Syllogisms</label>
-<label><input type="checkbox" class="ssc"> order&ranking</label>
-<label><input type="checkbox" class="ssc"> calender</label>
-<label><input type="checkbox" class="ssc"> missing number</label>
-<label><input type="checkbox" class="ssc"> odd on out</label>
-<label><input type="checkbox" class="ssc"> clock</label>
-<label><input type="checkbox" class="ssc"> cube and cubiod</label>
-<label><input type="checkbox" class="ssc"> puzzle </label>
-<label><input type="checkbox" class="ssc">Paper cutting & folder</label>
-<label><input type="checkbox" class="ssc"> Figure compretion</label>
+<label><input type="checkbox"> Analogy</label><br>
+<label><input type="checkbox"> Classification</label><br>
+<label><input type="checkbox"> Series</label><br>
+<label><input type="checkbox"> Coding Decoding</label><br>
+<label><input type="checkbox"> Blood Relation</label><br>
+<label><input type="checkbox"> Direction Sense</label><br>
+<label><input type="checkbox"> Venn Diagram</label><br>
+<label><input type="checkbox"> Syllogism</label>
 
 </div>
 
-<div class="box">
 
+<div class="box">
 <b>Maths</b><br>
 
-<label><input type="checkbox" class="ssc"> Number System</label><br>
-<label><input type="checkbox" class="ssc"> Percentage</label><br>
-<label><input type="checkbox" class="ssc"> Profit Loss</label><br>
-<label><input type="checkbox" class="ssc"> Ratio</label><br>
-<label><input type="checkbox" class="ssc"> Time Work</label><br>
-<label><input type="checkbox" class="ssc"> Algebra</label>
-<label><input type="checkbox" class="ssc"> Co-ordinate Geometry</label>
-<label><input type="checkbox" class="ssc"> Discount</label>
-<label><input type="checkbox" class="ssc"> Probability</label>
-<label><input type="checkbox" class="ssc"> Simple Interest</label>
-<label><input type="checkbox" class="ssc"> Compound Interest</label>
-<label><input type="checkbox" class="ssc"> Pipe& cistern</label>
-<label><input type="checkbox" class="ssc"> Time Speed& Distance</label>
-<label><input type="checkbox" class="ssc"> Train</label>
-<label><input type="checkbox" class="ssc"> Race</label>
-<label><input type="checkbox" class="ssc"> Boat&Stream</label>
-<label><input type="checkbox" class="ssc"> Proportion</label>
-<label><input type="checkbox" class="ssc"> Ratio& Ages</label>
-<label><input type="checkbox" class="ssc"> Number System</label>
-<label><input type="checkbox" class="ssc"> Partnership</label>
-<label><input type="checkbox" class="ssc"> Hcf & Lcm</label>
-<label><input type="checkbox" class="ssc"> Mensuration 2D</label>
-<label><input type="checkbox" class="ssc"> Simplification</label>
+<label><input type="checkbox"> Number System</label><br>
+<label><input type="checkbox"> Percentage</label><br>
+<label><input type="checkbox"> Profit Loss</label><br>
+<label><input type="checkbox"> Ratio</label><br>
+<label><input type="checkbox"> Time Work</label><br>
+<label><input type="checkbox"> Algebra</label>
+
+</div>
+
+
+<div class="box">
+<b>English</b><br>
+
+<label><input type="checkbox"> Reading Comprehension</label><br>
+<label><input type="checkbox"> Cloze Test</label><br>
+<label><input type="checkbox"> Error Detection</label><br>
+<label><input type="checkbox"> Synonyms</label><br>
+<label><input type="checkbox"> Idioms</label>
+
+</div>
+
+
+<div class="box">
+<b>General Awareness</b><br>
+
+<label><input type="checkbox"> History</label><br>
+<label><input type="checkbox"> Geography</label><br>
+<label><input type="checkbox"> Polity</label><br>
+<label><input type="checkbox"> Economics</label><br>
+<label><input type="checkbox"> Current Affairs</label>
 
 </div>
 
@@ -293,7 +271,7 @@ main.innerHTML=`
 
 <input id="productName" placeholder="Product name">
 
-<button onclick="addProduct()">Add Product</button>
+<button onclick="addProduct()">Add</button>
 
 <div id="productList"></div>
 
@@ -302,23 +280,19 @@ main.innerHTML=`
 `
 
 loadProducts()
-
 }
 
 function addProduct(){
 
 let name=document.getElementById("productName").value
-
 if(!name) return
 
 let list=JSON.parse(localStorage.getItem("products")||"[]")
-
 list.push(name)
 
 localStorage.setItem("products",JSON.stringify(list))
 
 loadProducts()
-
 }
 
 function loadProducts(){
@@ -359,19 +333,18 @@ loadProducts()
 
 function brahm(){
 
-let day=localStorage.getItem("brahm")||0
+let dayCount=localStorage.getItem("brahm")||0
 
 main.innerHTML=`
 
-<h2>🔱 Brahmacharya Challenge</h2>
+<h2>🔱 Brahmacharya</h2>
 
 <div class="circle">
-<h1>${day}</h1>
+<h1>${dayCount}</h1>
 <p>Days</p>
 </div>
 
 <button onclick="addBrahm()">+1 Day</button>
-<button onclick="resetDay()">Reset</button>
 
 <button onclick="location.reload()">⬅ Back</button>
 
@@ -380,7 +353,7 @@ main.innerHTML=`
 }
 
 function addBrahm(){
-  
+
 let d=parseInt(localStorage.getItem("brahm")||0)
 
 d++
@@ -391,18 +364,11 @@ location.reload()
 
 }
 
-function resetDay(){
-
-localStorage.setItem("brahm",0)
-
-location.reload()
-
-}
-
 
 // ===== SELFIE =====
 
 function selfie(){
+
 main.innerHTML=`
 
 <h2>📸 Daily Selfie</h2>
@@ -419,22 +385,19 @@ loadSelfies()
 
 }
 
-
 function saveSelfie(event){
 
 let file=event.target.files[0]
-
-if(!file) return
 
 let reader=new FileReader()
 
 reader.onload=function(e){
 
-let imgData=e.target.result
+let img=e.target.result
 
 let list=JSON.parse(localStorage.getItem("selfies")||"[]")
 
-list.push(imgData)
+list.push(img)
 
 localStorage.setItem("selfies",JSON.stringify(list))
 
@@ -446,7 +409,6 @@ reader.readAsDataURL(file)
 
 }
 
-
 function loadSelfies(){
 
 let list=JSON.parse(localStorage.getItem("selfies")||"[]")
@@ -454,25 +416,15 @@ let list=JSON.parse(localStorage.getItem("selfies")||"[]")
 let html=""
 
 list.forEach(img=>{
-
-html+=`
-
-<div class="box">
-
-<img src="${img}" style="width:100%;border-radius:10px">
-
-</div>
-
-`
-
+html+=`<div class="box"><img src="${img}" style="width:100%"></div>`
 })
 
 document.getElementById("selfieGallery").innerHTML=html
 
 }
+
+
 // ===== NOTES =====
-
-
 
 function notes(){
 
@@ -480,7 +432,7 @@ main.innerHTML=`
 
 <h2>📝 Notes</h2>
 
-<textarea id="noteInput" placeholder="Write your note..."></textarea>
+<textarea id="noteInput"></textarea>
 
 <div id="notesList"></div>
 
@@ -494,32 +446,21 @@ document.getElementById("noteInput").addEventListener("keyup",saveNote)
 
 }
 
-
 function saveNote(){
 
 let text=document.getElementById("noteInput").value
 
-if(text.trim()==="") return
-
-let now=new Date()
-
-let time=now.toLocaleString()
+let time=new Date().toLocaleString()
 
 let list=JSON.parse(localStorage.getItem("notesList")||"[]")
 
-list.unshift({
-text:text,
-time:time
-})
+list.unshift({text:text,time:time})
 
 localStorage.setItem("notesList",JSON.stringify(list))
-
-document.getElementById("noteInput").value=""
 
 loadNotes()
 
 }
-
 
 function loadNotes(){
 
@@ -527,23 +468,15 @@ let list=JSON.parse(localStorage.getItem("notesList")||"[]")
 
 let html=""
 
-list.forEach((n,i)=>{
-
-html+=`
-
-<div class="box">
-
-<b>${n.time}</b><br>
-
-${n.text}
-
-</div>
-
-`
-
+list.forEach(n=>{
+html+=`<div class="box"><b>${n.time}</b><br>${n.text}</div>`
 })
 
 document.getElementById("notesList").innerHTML=html
 
 }
 
+</script>
+
+</body>
+</html>
