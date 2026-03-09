@@ -238,4 +238,5 @@ let percent = total===0 ? 0 : Math.round((done/total)*100);
 
 document.getElementById("sscBar").style.width=percent+"%";
 document.getElementById("sscText").innerText=percent+"% Target Completed";
+
 }
