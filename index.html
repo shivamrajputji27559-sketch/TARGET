@@ -168,21 +168,145 @@ h+=`</div>`
 return h
 }
 
-// ===== DIET =====
+// ===== DIET + WEIGHT TRACKER =====
 
 function diet(){
 
 main.innerHTML=`
-<h2>🥗 VEG DIET PLAN</h2>
 
-<div class="box">Meal 1 : Chana + Mung + Almond + Banana</div>
-<div class="box">Meal 2 : Rice + 4 Roti + Dal</div>
-<div class="box">Meal 3 : Rice + Soya / Paneer</div>
-<div class="box">Meal 4 : Banana Shake + Oats + Peanut Butter</div>
-<div class="box">Meal 5 : Roti + Milk</div>
+<h2>🥗 Muscle Gain Diet Plan</h2>
+
+<div class="box">
+<b>Meal 1</b><br>
+80g Chana<br>
+30g Moong Dal<br>
+4 Khajur<br>
+4 Almond<br>
+3 Banana<br>
+100ml Milk<br>
+20g Peanut<br><br>
+
+Calories : 650 kcal<br>
+Protein : 26 g
+</div>
+
+<div class="box">
+<b>Meal 2</b><br>
+3 Roti + 1 Bowl Dal + Sabji<br><br>
+
+Calories : 450 kcal<br>
+Protein : 16 g
+</div>
+
+<div class="box">
+<b>Meal 3</b><br>
+200g Rice + 2 Roti<br>
+Creatine 5g<br><br>
+
+Calories : 470 kcal<br>
+Protein : 11 g
+</div>
+
+<div class="box">
+<b>After Workout</b><br>
+50g Oats<br>
+3 Banana<br>
+200ml Milk<br>
+4 Khajur<br>
+4 Almond<br><br>
+
+Calories : 520 kcal<br>
+Protein : 16 g
+</div>
+
+<div class="box">
+<b>Meal 4</b><br>
+2 Roti + 250g Paneer / 2 Eggs<br><br>
+
+Calories : 650 kcal<br>
+Protein : 45 g
+</div>
+
+<div class="box">
+<b>Total Daily Intake</b><br>
+Calories : <b>2700+ kcal</b><br>
+Protein : <b>110+ g</b>
+</div>
+
+<hr>
+
+<h2>⚖️ Weight Tracker</h2>
+
+<div class="box">
+Starting Weight : <b>48 kg</b>
+</div>
+
+<input id="weightInput" placeholder="Enter Today Weight (kg)">
+
+<button onclick="saveWeight()">Save Weight</button>
+
+<div id="weightList"></div>
 
 <button onclick="location.reload()">⬅ Back</button>
+
 `
+
+loadWeight()
+
+}
+
+
+// ===== SAVE WEIGHT =====
+
+function saveWeight(){
+
+let w=document.getElementById("weightInput").value
+
+if(w==="") return
+
+let time=new Date().toLocaleDateString()
+
+let list=JSON.parse(localStorage.getItem("weightList")||"[]")
+
+list.unshift({
+weight:w,
+time:time
+})
+
+localStorage.setItem("weightList",JSON.stringify(list))
+
+document.getElementById("weightInput").value=""
+
+loadWeight()
+
+}
+
+
+// ===== LOAD WEIGHT =====
+
+function loadWeight(){
+
+let list=JSON.parse(localStorage.getItem("weightList")||"[]")
+
+let html=""
+
+list.forEach(w=>{
+
+html+=`
+
+<div class="box">
+
+<b>${w.time}</b><br>
+Weight : ${w.weight} kg
+
+</div>
+
+`
+
+})
+
+document.getElementById("weightList").innerHTML=html
+
 }
 
 // ===== SSC =====
@@ -630,12 +754,12 @@ Sheet Solve (Maths + Reasoning)
 <button onclick="location.reload()">⬅ Back</button>
 
 `
-
 }
 </script>
 
 </body>
 </html>
+
 
 
 
