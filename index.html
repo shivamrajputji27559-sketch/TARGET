@@ -440,3 +440,63 @@ location.reload()
 </body>
 </html>
 
+
+// ===== SELFIE =====
+
+function selfie(){
+
+main.innerHTML=`
+
+<h2>📸 Daily Selfie</h2>
+
+<input type="file" accept="image/*" capture="camera" onchange="saveSelfie(event)">
+
+<div id="selfieGallery"></div>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
+loadSelfies()
+
+}
+
+function saveSelfie(event){
+
+let file=event.target.files[0]
+
+if(!file) return
+
+let reader=new FileReader()
+
+reader.onload=function(e){
+
+let img=e.target.result
+
+let list=JSON.parse(localStorage.getItem("selfies")||"[]")
+
+list.push(img)
+
+localStorage.setItem("selfies",JSON.stringify(list))
+
+loadSelfies()
+
+}
+
+reader.readAsDataURL(file)
+
+}
+
+function loadSelfies(){
+
+let list=JSON.parse(localStorage.getItem("selfies")||"[]")
+
+let html=""
+
+list.forEach(img=>{
+html+=`<div class="box"><img src="${img}" style="width:100%"></div>`
+})
+
+document.getElementById("selfieGallery").innerHTML=html
+
+}
