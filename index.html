@@ -435,12 +435,6 @@ localStorage.setItem("brahm",d)
 location.reload()
 }
 
-</script>
-
-</body>
-</html>
-
-
 // ===== SELFIE =====
 
 function selfie(){
@@ -499,4 +493,69 @@ html+=`<div class="box"><img src="${img}" style="width:100%"></div>`
 
 document.getElementById("selfieGallery").innerHTML=html
 
+// ===== NOTES =====
+
+function notes(){
+
+main.innerHTML=`
+
+<h2>📝 Notes</h2>
+
+<textarea id="noteInput" placeholder="Write your note..."></textarea>
+
+<div id="notesList"></div>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
+loadNotes()
+
+document.getElementById("noteInput").addEventListener("keyup",saveNote)
+
 }
+
+function saveNote(){
+
+let text=document.getElementById("noteInput").value
+
+if(text.trim()==="") return
+
+let time=new Date().toLocaleString()
+
+let list=JSON.parse(localStorage.getItem("notesList")||"[]")
+
+list.unshift({
+text:text,
+time:time
+})
+
+localStorage.setItem("notesList",JSON.stringify(list))
+
+document.getElementById("noteInput").value=""
+
+loadNotes()
+
+}
+
+function loadNotes(){
+
+let list=JSON.parse(localStorage.getItem("notesList")||"[]")
+
+let html=""
+
+list.forEach(n=>{
+html+=`
+<div class="box">
+<b>${n.time}</b><br>
+${n.text}
+</div>
+`
+})
+
+document.getElementById("notesList").innerHTML=html
+
+}}</script>
+
+</body>
+</html>
