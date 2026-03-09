@@ -108,6 +108,7 @@ border:1px solid #ccc
 <div class="card" onclick="brahm()">🔱 BRAHMACHARYA</div>
 <div class="card" onclick="selfie()">📸 SELFIE</div>
 <div class="card" onclick="notes()">📝 NOTES</div>
+<div class="card" onclick="Time table()">📚 NOTES</div>
 </div>
 
 </div>
@@ -467,9 +468,14 @@ reader.onload=function(e){
 
 let img=e.target.result
 
+let time=new Date().toLocaleString()
+
 let list=JSON.parse(localStorage.getItem("selfies")||"[]")
 
-list.push(img)
+list.push({
+image:img,
+time:time
+})
 
 localStorage.setItem("selfies",JSON.stringify(list))
 
@@ -487,14 +493,19 @@ let list=JSON.parse(localStorage.getItem("selfies")||"[]")
 
 let html=""
 
-list.forEach(img=>{
-html+=`<div class="box"><img src="${img}" style="width:100%"></div>`
+list.forEach(item=>{
+html+=`
+<div class="box">
+<b>${item.time}</b><br>
+<img src="${item.image}" style="width:100%">
+</div>
+`
 })
 
 document.getElementById("selfieGallery").innerHTML=html
 
 }
-
+  
   // ===== NOTES =====
 
 function notes(){
@@ -565,6 +576,7 @@ document.getElementById("notesList").innerHTML=html
 
 </body>
 </html>
+
 
 
 
