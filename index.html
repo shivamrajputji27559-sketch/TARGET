@@ -501,7 +501,9 @@ main.innerHTML=`
 
 <h2>📝 Notes</h2>
 
-<textarea id="noteInput" placeholder="Write your note..."></textarea>
+<textarea id="noteInput" placeholder="Write your note here..." rows="4"></textarea>
+
+<button onclick="saveNote()">Save Note</button>
 
 <div id="notesList"></div>
 
@@ -510,8 +512,6 @@ main.innerHTML=`
 `
 
 loadNotes()
-
-document.getElementById("noteInput").addEventListener("keyup",saveNote)
 
 }
 
@@ -545,17 +545,24 @@ let list=JSON.parse(localStorage.getItem("notesList")||"[]")
 let html=""
 
 list.forEach(n=>{
+
 html+=`
+
 <div class="box">
 <b>${n.time}</b><br>
 ${n.text}
 </div>
+
 `
+
 })
 
 document.getElementById("notesList").innerHTML=html
+
+}
 
 }}</script>
 
 </body>
 </html>
+
