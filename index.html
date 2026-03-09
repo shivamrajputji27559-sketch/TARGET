@@ -380,17 +380,7 @@ main.innerHTML=`
 }
 
 function addBrahm(){
-
-let d=parseInt(localStorage.getItem("brahm")||0)
-
-d++
-
-localStorage.setItem("brahm",d)
-
-location.reload()
-
-}
-
+  
 let d=parseInt(localStorage.getItem("brahm")||0)
 
 d++
@@ -412,11 +402,7 @@ location.reload()
 
 // ===== SELFIE =====
 
-
-
-}
 function selfie(){
-
 main.innerHTML=`
 
 <h2>📸 Daily Selfie</h2>
@@ -488,7 +474,6 @@ document.getElementById("selfieGallery").innerHTML=html
 
 
 
-localStorage.setItem("notes",note.value)
 function notes(){
 
 main.innerHTML=`
@@ -561,3 +546,4 @@ ${n.text}
 document.getElementById("notesList").innerHTML=html
 
 }
+
