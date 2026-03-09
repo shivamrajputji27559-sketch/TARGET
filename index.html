@@ -572,10 +572,70 @@ ${n.text}
 
 document.getElementById("notesList").innerHTML=html
 
+}
+
+// ===== TIMETABLE =====
+
+function timetable(){
+
+main.innerHTML=`
+
+<h2>🕒 Daily Study Timetable</h2>
+
+<div class="box">
+<b>6:00 AM</b><br>
+Wake Up
+</div>
+
+<div class="box">
+<b>6:00 - 6:30 AM</b><br>
+Fresh + Brush
+</div>
+
+<div class="box">
+<b>6:30 - 6:45 AM</b><br>
+Breakfast
+</div>
+
+<div class="box">
+<b>7:00 - 10:00 AM</b><br>
+Library Study (Maths)
+</div>
+
+<div class="box">
+<b>10:00 - 10:30 AM</b><br>
+Breakfast / Break
+</div>
+
+<div class="box">
+<b>11:30 - 1:30 PM</b><br>
+Reasoning
+</div>
+
+<div class="box">
+<b>2:00 - 3:30 PM</b><br>
+English
+</div>
+
+<div class="box">
+<b>3:30 - 5:00 PM</b><br>
+Polity (3 Days) / Geography (3 Days)
+</div>
+
+<div class="box">
+<b>5:00 - 6:00 PM</b><br>
+Sheet Solve (Maths + Reasoning)
+</div>
+
+<button onclick="location.reload()">⬅ Back</button>
+
+`
+
 }</script>
 
 </body>
 </html>
+
 
 
 
