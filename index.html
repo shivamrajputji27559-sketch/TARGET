@@ -230,8 +230,19 @@ main.innerHTML=`
 <label><input type="checkbox" class="ssc"> Series</label><br>
 <label><input type="checkbox" class="ssc"> Coding Decoding</label><br>
 <label><input type="checkbox" class="ssc"> Blood Relation</label><br>
-<label><input type="checkbox" class="ssc"> Direction Distance</label><br>
+<label><input type="checkbox" class="ssc"> Direction sence </label><br>
 <label><input type="checkbox" class="ssc"> Venn Diagram</label>
+<label><input type="checkbox" class="ssc"> Number& Alphabet Series</label>
+<label><input type="checkbox" class="ssc"> Syllogisms</label>
+<label><input type="checkbox" class="ssc"> order&ranking</label>
+<label><input type="checkbox" class="ssc"> calender</label>
+<label><input type="checkbox" class="ssc"> missing number</label>
+<label><input type="checkbox" class="ssc"> odd on out</label>
+<label><input type="checkbox" class="ssc"> clock</label>
+<label><input type="checkbox" class="ssc"> cube and cubiod</label>
+<label><input type="checkbox" class="ssc"> puzzle </label>
+<label><input type="checkbox" class="ssc">Paper cutting & folder</label>
+<label><input type="checkbox" class="ssc"> Figure compretion</label>
 
 </div>
 
@@ -245,6 +256,23 @@ main.innerHTML=`
 <label><input type="checkbox" class="ssc"> Ratio</label><br>
 <label><input type="checkbox" class="ssc"> Time Work</label><br>
 <label><input type="checkbox" class="ssc"> Algebra</label>
+<label><input type="checkbox" class="ssc"> Co-ordinate Geometry</label>
+<label><input type="checkbox" class="ssc"> Discount</label>
+<label><input type="checkbox" class="ssc"> Probability/label>
+<label><input type="checkbox" class="ssc"> Simple Interest</label>
+<label><input type="checkbox" class="ssc"> Compound Interest</label>
+<label><input type="checkbox" class="ssc"> Pipe& cistern</label>
+<label><input type="checkbox" class="ssc"> Time Speed& Distance</label>
+<label><input type="checkbox" class="ssc"> Train</label>
+<label><input type="checkbox" class="ssc"> Race</label>
+<label><input type="checkbox" class="ssc"> Boat&Stream</label>
+<label><input type="checkbox" class="ssc"> Proportion</label>
+<label><input type="checkbox" class="ssc"> Ratio& Ages</label>
+<label><input type="checkbox" class="ssc"> Number System</label>
+<label><input type="checkbox" class="ssc"> Partnership</label>
+<label><input type="checkbox" class="ssc"> Hcf & Lcm</label>
+<label><input type="checkbox" class="ssc"> Mensuration 2D</label>
+<label><input type="checkbox" class="ssc"> Simplification</label>
 
 </div>
 
@@ -337,19 +365,16 @@ main.innerHTML=`
 
 <h2>🔱 Brahmacharya Challenge</h2>
 
-<h1>${day} Days</h1>
+<div class="circle" id="circle">
+<h1 id="day">1</h1>
+<p>Days</p>
 
-<button onclick="addDay()">+1 Day</button>
+</div>
 
-<button onclick="resetDay()">Reset</button>
-
-<button onclick="location.reload()">⬅ Back</button>
 
 `
 
 }
-
-function addDay(){
 
 let d=parseInt(localStorage.getItem("brahm")||0)
 
@@ -378,9 +403,9 @@ main.innerHTML=`
 
 <h2>📸 Daily Selfie</h2>
 
-<input type="file">
+<input type="camera">
 
-<button onclick="location.reload()">⬅ Back</button>
+<button onclick="location.save()">⬅ Back</button>
 
 `
 
@@ -419,6 +444,7 @@ alert("Saved")
 
 </body>
 </html>
+
 
 
 
