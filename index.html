@@ -702,8 +702,7 @@ document.getElementById("notesList").innerHTML=html
 
 function timetable(){
 
-main.innerHTML=`
-
+main.innerHTML = `
 <h2>🕒 Daily Study Timetable</h2>
 
 <div style="background:#ddd;height:14px;border-radius:8px;margin-bottom:10px">
@@ -711,7 +710,6 @@ main.innerHTML=`
 </div>
 
 <div id="studyText" style="font-weight:bold;margin-bottom:10px">0% Completed</div>
-
 
 <div class="box">
 <label><input type="checkbox" class="study"> <b>6:00 AM</b> Wake Up</label>
@@ -758,10 +756,9 @@ main.innerHTML=`
 </div>
 
 <button onclick="location.reload()">⬅ Back</button>
+`;
 
-`
-
-setupStudy()
+setupStudy();
 
 }
 
@@ -770,23 +767,23 @@ setupStudy()
 
 function setupStudy(){
 
-let boxes=document.querySelectorAll(".study")
+let boxes=document.querySelectorAll(".study");
 
 boxes.forEach((box,i)=>{
 
-box.checked=localStorage.getItem("study"+i)==="true"
+box.checked = localStorage.getItem("study"+i)==="true";
 
 box.addEventListener("change",()=>{
 
-localStorage.setItem("study"+i,box.checked)
+localStorage.setItem("study"+i,box.checked);
 
-updateStudy()
+updateStudy();
 
-})
+});
 
-})
+});
 
-updateStudy()
+updateStudy();
 
 }
 
@@ -795,24 +792,26 @@ updateStudy()
 
 function updateStudy(){
 
-let boxes=document.querySelectorAll(".study")
+let boxes=document.querySelectorAll(".study");
 
-let total=boxes.length
-let done=0
+let total=boxes.length;
+let done=0;
 
 boxes.forEach(b=>{
-if(b.checked) done++
-})
+if(b.checked) done++;
+});
 
-let percent=Math.round((done/total)*100)
+let percent=Math.round((done/total)*100);
 
-document.getElementById("studyBar").style.width=percent+"%"
-document.getElementById("studyText").innerText=percent+"% Completed"
+document.getElementById("studyBar").style.width=percent+"%";
+document.getElementById("studyText").innerText=percent+"% Completed";
 
-}</script>
+}
+</script>
 
 </body>
 </html>
+
 
 
 
